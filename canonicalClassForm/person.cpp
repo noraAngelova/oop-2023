@@ -34,6 +34,38 @@ Person& Person::operator=(Person const& other) {
 	return *this;
 }
 
+Person::Person(Person && other) {
+	age = other.age;
+	firstName = other.firstName;
+
+	other.firstName = nullptr;
+	other.age = 0;
+}
+
+Person& Person::operator=(Person && other) {
+	if (this != &other) {
+		age = other.age;
+
+		delete[] firstName;
+		firstName = other.firstName;
+
+		other.firstName = nullptr;
+		other.age = 0;
+	}
+
+	return *this;
+}
+
+// Предефиниране на оператори
+bool Person::operator<(Person const& other) const {
+	return age < other.age;
+}
+
+bool Person::operator==(Person const& other) const {
+	return (age == other.age) && strcmp(firstName, other.firstName) == 0;
+}
+
+
 void Person::print() const {
 	std::cout << firstName << " " << age;
 }
