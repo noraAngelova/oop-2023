@@ -14,7 +14,14 @@ public:
 	~Person();
 	Person& operator=(Person const& other);
 
+	// Move семантика
+	Person(Person && other);
+	Person& operator=(Person && other);
+
 	void print() const;
+
+	bool operator<(Person const& other) const;
+	bool operator==(Person const& other) const;
 };
 
 #endif
