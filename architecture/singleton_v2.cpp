@@ -20,7 +20,7 @@ class System {
       return this -> generalData;
    }
 
-   void setData(int data) {
+   void setData(unsigned data) {
       this -> generalData = data;
    }
    
